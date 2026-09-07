@@ -83,3 +83,13 @@ class Persona:
     def tabla_proceso(self):
         """Tabla con el cálculo interno de cada ronda para esta persona."""
         return pd.DataFrame(self.historial_proceso)
+def von_neuman(seed):
+    seeds_len=len(str(seed))
+    temp=str(seed**2)
+    if len(temp)<seeds_len*2:
+        temp=temp.zfill(seeds_len*2)
+    new_seed=temp[seeds_len//2:seeds_len//2+seeds_len]
+    return int(new_seed)
+def linear_congruential(seed,a,c,m):
+    new_seed=(a*seed+c)%m
+    return new_seed
